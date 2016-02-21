@@ -77,11 +77,13 @@
 				</div>
 			</div>
 		    <div id="cart">
-                <a href="<?php echo $rmb; ?>">RMB</a>
-                <a href="<?php echo $gbp; ?>">GBP</a>
-                <a href="<?php echo $eur; ?>">EUR</a>
-                <a href="<?php echo $usd; ?>">USD</a>
-			    <a href="">English</a> /
+                <select onchange="javascript:location.href=this.value">
+                    <option value="<?php echo $rmb; ?>" <?php if(!isset($_SESSION['currency']) || $_SESSION['currency'] == 'rmb'){ echo 'selected';} ?>>RMB</option>
+                    <option value="<?php echo $gbp; ?>" <?php  if($_SESSION['currency'] == 'gbp'){ echo 'selected';} ?>>GBP</option>
+                    <option value="<?php echo $eur; ?>" <?php  if($_SESSION['currency'] == 'eur'){ echo 'selected';} ?>>EUR</option>
+                    <option value="<?php echo $usd; ?>" <?php  if($_SESSION['currency'] == 'usd'){ echo 'selected';} ?>>USD</option>
+                </select>
+                <a href="">English</a> /
 			    <a href="trad">繁体中文</a> /
 			    <a class="space-right" href="simp">简体中文</a>
 	    	    <a  href="cart.php"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a>	    	
