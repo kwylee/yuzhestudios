@@ -54,6 +54,7 @@
                 }
             //-->
         </script>
+        
     	
     </head>
     <body>
@@ -67,55 +68,28 @@
             </div>
         </div> 
 		<div id="header">
-			<div id="topBar">
-				<div id="social">
-					<a href="https://www.facebook.com/yuzhestudios?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
-					<a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram"></i></a>
-					<!-- <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter"></i></a> -->
-					<a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo"></i></a>    	
-                    <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxPosition');"><i class="fa fa-weixin"></i></a>			
-				</div>
-			</div>
-		    <div id="cart">
-                <select onchange="javascript:location.href=this.value">
-                    <option value="<?php echo $rmb; ?>" <?php if(!isset($_SESSION['currency']) || $_SESSION['currency'] == 'rmb'){ echo 'selected';} ?>>RMB</option>
-                    <option value="<?php echo $gbp; ?>" <?php  if($_SESSION['currency'] == 'gbp'){ echo 'selected';} ?>>GBP</option>
-                    <option value="<?php echo $eur; ?>" <?php  if($_SESSION['currency'] == 'eur'){ echo 'selected';} ?>>EUR</option>
-                    <option value="<?php echo $usd; ?>" <?php  if($_SESSION['currency'] == 'usd'){ echo 'selected';} ?>>USD</option>
-                </select>
-                <a href="">English</a> /
-			    <a href="trad">繁体中文</a> /
-			    <a class="space-right" href="simp">简体中文</a>
-	    	    <a  href="cart.php"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a>	    	
-		    </div>
+            <div class="row">
+                <div class="col-5 lang">
+                    <a href="">English</a> /
+                    <a href="trad">繁体中文</a> /
+                    <a href="simp">简体中文</a>
+                </div>
+                <div class="col-5 lang-mobile">
+                    <a href="">Eng</a> /
+                    <a href="trad">繁体</a> /
+                    <a href="simp">简体</a>
+                </div>
+                <div class="col-2 tac cart">
+                    <a  href="cart.php"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a>
+                </div>
+                <div class="col-5 tar currency">
+                    <span>Curreny:</span>
+                    <select onchange="javascript:location.href=this.value">
+                        <option value="<?php echo $rmb; ?>" <?php if(!isset($_SESSION['currency']) || $_SESSION['currency'] == 'rmb'){ echo 'selected';} ?>>RMB</option>
+                        <option value="<?php echo $gbp; ?>" <?php  if(isset($_SESSION['currency']) && $_SESSION['currency'] == 'gbp'){ echo 'selected';} ?>>GBP</option>
+                        <option value="<?php echo $eur; ?>" <?php  if(isset($_SESSION['currency']) && $_SESSION['currency'] == 'eur'){ echo 'selected';} ?>>EUR</option>
+                        <option value="<?php echo $usd; ?>" <?php  if(isset($_SESSION['currency']) && $_SESSION['currency'] == 'usd'){ echo 'selected';} ?>>USD</option>
+                    </select>        
+                </div>
+            </div>
 	    </div>
-        <nav>            
-            <a href="#" id="menu-icon"></a>
-            <ul>
-                <li><a href="index.php"><img src="img/logo.png" class="logo" alt="logo"></a></li>                
-                <li><a href="shop.php">Shop</a></li>
-                <li><a href="./#section3">Lookbook</a></li>
-                <li><a href="./#section2">About</a></li>
-                <!-- <select onchange="location = this.options[this.selectedIndex].value;">
-                    <option value="">Language</option>
-                    <option value="./">English</option>
-                    <option value="trad">繁体中文</option>
-                    <option value="simp">简体中文</option>
-                </select> -->
-                <li><a href="cart.php"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a></li>
-            </ul>
-            <div id="lang">
-                <a href="">Eng</a> /
-                <a href="trad">繁体</a> /
-                <a class="space-right" href="simp">简体</a>          
-            </div>
-            <div id="social">
-                <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram"></i></a>
-                <a href="https://www.facebook.com/yuzhestudios?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
-                
-                <!-- <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter"></i></a> -->
-                <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo"></i></a> 
-                <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxPosition');"><i class="fa fa-weixin"></i></a>   
-                         
-            </div>
-        </nav>

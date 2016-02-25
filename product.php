@@ -92,9 +92,9 @@
 					<input name="personalise" type="checkbox" class="personalise"/>
 					</p>
 					<div class="show">
-						<input type="text" name="p1" maxlength="1">
-						<input type="text" name="p2" maxlength="1">
-						<input type="text" name="p3" maxlength="1">
+						<input type="text" pattern="[A-Za-z]+" title="Letters only" name="p1" maxlength="1">
+						<input type="text" pattern="[A-Za-z]+" title="Letters only" name="p2" maxlength="1">
+						<input type="text" pattern="[A-Za-z]+" title="Letters only" name="p3" maxlength="1">
 					</div>
 					<p><label for="quantity">Quantity: </label><input type="number" id="quantity" name="quantity" value="1" min="1" max="3"></p>
 					
@@ -106,9 +106,6 @@
 				    <br>
 				    <input type="submit" value="Add to Cart">
 			    </form>
-			</div>
-			<div class="next-product">
-				<a id="next" href="product-page-2.php" title="">&#9658;</a>
 			</div>
 		</div>
 		

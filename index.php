@@ -45,6 +45,11 @@
       </div>
     </div>
     <div id="section3" class="section clearfix">
+      <div class="intro">
+        <h1><a href="shop.php">Shop</a></h1>
+      </div>    
+    </div>
+    <div id="section4" class="section clearfix">
           <div class="intro">
             <p>COMING SOON</p>
             <p>For queries please contact us at
@@ -57,8 +62,19 @@
               <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
               <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
             </div>
-          </div>    
+          </div>  
+          <!-- <div id="slider">
+            <a href="#" class="control_next">>></a>
+            <a href="#" class="control_prev"><</a>
+            <ul>
+              <li>SLIDE 1</li>
+              <li style="background: #aaa;">SLIDE 2</li>
+              <li>SLIDE 3</li>
+              <li style="background: #aaa;">SLIDE 4</li>
+            </ul>  
+          </div> -->  
     </div>
+     
     
 <?php
  include('footer.php')

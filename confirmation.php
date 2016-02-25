@@ -189,7 +189,7 @@
 			<input type="hidden" name="sandbox_target_status" value="1">
 			<input type="hidden" name="invoice" value="1">
 			<input type="hidden" name="sign" value="<?php echo $sign_hash; ?>">
-			<input type="submit" value="YooPay" style="width:auto;">
+			<input type="submit" value="Pay" style="width:auto;"><span>You will be directed to our secure payment partner, Yoopay, to complete payment</span>
 		</form>
 		<?php }else{ 
 			echo '<script>window.location.href = "shop.php";</script>';

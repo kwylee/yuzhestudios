@@ -36,11 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		?>
 		<table cellpadding="4">
 			<tr>
-				<th>Options</th>
+				<th></th>
 				<th>Image</th>
-				<th>Product Name</th>
-				<th>Size</th>
-				<th>Personalise</th>
+				<th>Info</th>
 				<th>Price</th>
 				<th>Quantity</th>
 				<th>Sub Total</th>
@@ -52,12 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			    	<tr>
 			    		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 				    		<input type="hidden" name="order_product_id" value="<?php echo $row["order_product_id"]; ?>">
-							<td><input type="submit" value="Delete"></td>
+							<td><button type="submit" class="delete-button"><i class="fa fa-trash"></i></button></td>
 						</form>
 						<td><img src="<?php echo $row["image"]; ?>" class="cart-image"></td>
-						<td><?php echo $row["name"]; ?></td>
-						<td><?php echo $row["size"]; ?></td>
-						<td><?php if($row["personalise"] < '') {echo 'None';}else{ echo $row["personalise"];} ?></td>
+						<td><?php echo $row["name"]; ?></br>
+						<?php echo 'size: '.$row["size"]; ?></br>
+						<?php if($row["personalise"] < '') {echo '';}else{ echo 'extra: '. $row["personalise"];} ?></td>
 						
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
@@ -97,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			?>
 			
 			<tr>
-				<td colspan="7" class="tar" align="right">Total</td>
+				<td colspan="5" class="tar" align="right">Total</td>
 				<td align="left">
 					<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 		              if($_SESSION['currency'] == 'gbp'){

@@ -35,7 +35,7 @@
 <div id="main">
 	<div class="content-center">
 	<?php if($mail){ ?>
-		<h2>Thank you! Your order is being processed </h2>
+		<h2>Thank you! A confirmation email will be sent to you once your order has been successfully processed.</h2>
 	<?php } ?>
 
 	</div>
