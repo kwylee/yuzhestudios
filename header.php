@@ -30,7 +30,7 @@
         $usd = $url .'?currency=usd';
     }
 
-    ?>
+?>
 <html>
     <head>
       	<title>Yuzhestudios</title>
@@ -83,7 +83,7 @@
                     <a  href="cart.php"><i class="fa fa-shopping-cart"></i><span>My Cart</span></a>
                 </div>
                 <div class="col-5 tar currency">
-                    <span>Curreny:</span>
+                    <span>Currency:</span>
                     <select onchange="javascript:location.href=this.value">
                         <option value="<?php echo $rmb; ?>" <?php if(!isset($_SESSION['currency']) || $_SESSION['currency'] == 'rmb'){ echo 'selected';} ?>>RMB</option>
                         <option value="<?php echo $gbp; ?>" <?php  if(isset($_SESSION['currency']) && $_SESSION['currency'] == 'gbp'){ echo 'selected';} ?>>GBP</option>

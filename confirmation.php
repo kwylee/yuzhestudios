@@ -57,7 +57,15 @@
 	}
 	$result = mysqli_query($conn, 'select order_product.*, products.* from order_product INNER JOIN products ON order_product.product_no = products.product_no where order_product.order_id='.$_SESSION['order_id']);
 
-	
+	if(isset($_SESSION['customer_no'])){
+		$query_customer = mysqli_query($conn, "SELECT * FROM customer WHERE customer_no ='".$_SESSION['customer_no']."'");
+		//if customer is not found yet - database not updated new customer yet
+		if(mysqli_num_rows($query_customer) < 1){
+			//reload page till new cutomer is added to database
+			echo '<script>window.location.reload();</script>';	
+		}
+		$customer = mysqli_fetch_object($query_customer);
+	}	
 ?>
 <div id="main">
 	<div class="content-half">
@@ -67,9 +75,7 @@
 		<table cellpadding="4">
 			<tr>
 				<th>Image</th>
-				<th>Product Name</th>
-				<th>Size</th>
-				<th>Personalise</th>
+				<th>Product info</th>
 				<th>Price</th>
 				<th>Quantity</th>
 				<th>Sub Total</th>
@@ -80,9 +86,9 @@
 			    ?>
 			    	<tr>
 						<td><img src="<?php echo $row["image"]; ?>" class="cart-image"></td>
-						<td><?php echo $row["name"]; ?></td>
-						<td><?php echo $row["size"]; ?></td>
-						<td><?php if($row["personalise"] < '') {echo 'None';}else{ echo $row["personalise"];} ?></td>
+						<td><?php echo $row["name"]; ?></br>
+						<?php echo 'Size: '.$row["size"]; ?></br>
+						<?php echo strtoupper($row["personalise"]);?></td>
 						
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
@@ -121,9 +127,34 @@
 			    }
 			
 			?>
-			
 			<tr>
-				<td colspan="6" class="tar" align="right">Total</td>
+				<td colspan="4" class="tar" align="right">Shipping</td>
+				<td align="left">
+					<?php 
+					$shipping = 100;
+					if(isset($customer->country) && ($customer->country == 'china' || $customer->country == 'hong kong' || $customer->country == 'taiwan' || $customer->country == 'macau')){
+						echo 'Free';
+					}
+					elseif(!isset($_SESSION['currency']) || $_SESSION['currency'] == 'rmb'){
+						echo '¥'.$shipping;
+					}
+					else{
+						if($_SESSION['currency'] == 'gbp'){
+			                echo '£';
+			            }
+			              elseif($_SESSION['currency'] == 'usd'){
+			                echo '<span style="font-family: Arial;">$</span>';
+			            }
+			              elseif($_SESSION['currency'] == 'eur'){
+			                echo '€';
+			            }
+					 	echo convertCurrency($shipping, "CNY", $_SESSION['currency']);
+					}
+		            ?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" class="tar" align="right">Total</td>
 				<td align="left">
 					<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 		              if($_SESSION['currency'] == 'gbp'){
@@ -143,29 +174,17 @@
 				</td>
 			</tr>
 		</table>
-		<div>
-			<?php if(isset($_SESSION['customer_no'])){
-				$query_customer = mysqli_query($conn, "SELECT * FROM customer WHERE customer_no ='".$_SESSION['customer_no']."'");
-				//if customer is not found yet - database not updated new customer yet
-				if(mysqli_num_rows($query_customer) < 1){
-					//reload page till new cutomer is added to database
-					echo '<script>window.location.reload();</script>';	
-				}
-				$customer = mysqli_fetch_object($query_customer);
-			?>
-				<h3>Customer info</h3>
-				<p><?php echo $customer->name; ?></p>
-				<p><?php echo $customer->email; ?></p>
-				<p><?php echo $customer->address_line1; ?></p>
-				<p><?php echo $customer->address_line2; ?></p>
-				<p><?php echo $customer->city; ?></p>
-				<p><?php echo $customer->prov_count; ?></p>
-				<p><?php echo $customer->country; ?></p>
-				<p><?php echo $customer->code; ?></p>
-				<p><?php echo $customer->tel; ?></p>
-			<?php
-			}				
-			?>
+		<div>			
+			<h3>Customer info</h3>
+			<p><?php echo ucwords($customer->name); ?></br>
+			<?php echo $customer->email; ?></br>
+			<?php echo ucwords($customer->address_line1); ?></br>
+			<?php if($customer->address_line2 > ''){echo ucwords($customer->address_line2) . '</br>';} ?>
+			<?php echo ucwords($customer->city); ?></br>
+			<?php echo ucwords($customer->prov_count); ?></br>
+			<?php echo ucwords($customer->country); ?></br>
+			<?php echo strtoupper($customer->code); ?></br>
+			<?php echo $customer->tel; ?></p>
 		</div>
 		<?php
 		$sign = strtoupper('d747829c984982e81fcd3bb515831cd7yuzhestudios@gmail.com'. $_SESSION['order_id'] . $_SESSION['total'] .'CNYhttp://yuzhestudios.com/cart.php11');
@@ -189,7 +208,8 @@
 			<input type="hidden" name="sandbox_target_status" value="1">
 			<input type="hidden" name="invoice" value="1">
 			<input type="hidden" name="sign" value="<?php echo $sign_hash; ?>">
-			<input type="submit" value="Pay" style="width:auto;"><span>You will be directed to our secure payment partner, Yoopay, to complete payment</span>
+			<input type="submit" value="Pay" style="width:auto;"></br>
+			<span class="font-3">You will be directed to our secure payment partner, Yoopay, to complete payment</span>
 		</form>
 		<?php }else{ 
 			echo '<script>window.location.href = "shop.php";</script>';

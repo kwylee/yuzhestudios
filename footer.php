@@ -11,7 +11,7 @@
             <a href="index.php"><img src="img/logo.png" class="logo" alt="logo"></a>
         </div>
         <div class="col-5 tar">
-        	<a href="">Contact &amp; info</a>
+        	<a href="contact+info.php">Contact &amp; info</a>
         </div>
     </div>
 </div>
@@ -49,7 +49,7 @@
 		content: '<p>That&apos;s what this widget is</p><img src="img/icon-down.png"/>' 
 	});
 	$( "#size-guide" ).tooltip({ 
-		content: '<p>Size Guide</p><img src="img/size-guide.png"/>' 
+		content: '<p>Size Guide</p><img src="img/size-guide2.png"/>' 
 	});
 	$("form .show input[type=text]").on('input',function () {
 	    if(jQuery(this).val().length == jQuery(this).attr('maxlength')) {

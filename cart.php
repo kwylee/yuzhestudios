@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 						<td><img src="<?php echo $row["image"]; ?>" class="cart-image"></td>
 						<td><?php echo $row["name"]; ?></br>
 						<?php echo 'size: '.$row["size"]; ?></br>
-						<?php if($row["personalise"] < '') {echo '';}else{ echo 'extra: '. $row["personalise"];} ?></td>
+						<?php echo strtoupper($row["personalise"]);?></td>
 						
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
@@ -93,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			    }
 			
 			?>
-			
 			<tr>
 				<td colspan="5" class="tar" align="right">Total</td>
 				<td align="left">

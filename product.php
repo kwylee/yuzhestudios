@@ -79,10 +79,10 @@
 	            ?>
 				<p>Size:
 					<select name="size">
-					  <option value="36">36</option>
-					  <option value="38">38</option>
-					  <option value="40">40</option>
-					  <option value="42">42</option>
+					  <option value="XS">XS</option>
+					  <option value="S">S</option>
+					  <option value="M">M</option>
+					  <option value="L">L</option>
 					</select>
 					</p>
 					<p><a id="size-guide" href="#" title="">Size guide</a></p>
