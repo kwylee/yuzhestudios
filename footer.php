@@ -15,7 +15,6 @@
         </div>
     </div>
 </div>
-
 	<script src="./js/jquery.min.js"></script>
 	<script>
 	$("#down-link").click(function() {

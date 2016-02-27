@@ -1,7 +1,7 @@
 <?php
 include ('header.php');
 include ('sidebar.php');
-require 'connect.php';
+require '../connect.php';
 if(isset($_SESSION['order_id']))
 {
 	$result = mysqli_query($conn, 'select order_product.*, products.* from order_product INNER JOIN products ON order_product.product_no = products.product_no where order_product.order_id='.$_SESSION['order_id']);
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 ?>
 	<div id="main">
-		<h2>Shopping Cart</h2>
+		<h2>購物車</h2>
 		<?php 
 		/*$cart = implode(unserialize(serialize($_SESSION['cart'])));
 		print_r($cart);
@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		<table cellpadding="4">
 			<tr>
 				<th></th>
-				<th>Image</th>
-				<th>Info</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Sub Total</th>
+				<th>照片</th>
+				<th>内容</th>
+				<th>價格</th>
+				<th>數量</th>
+				<th>小計</th>
 			</tr>
 			<?php 
 			    // output data of each row
@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				    		<input type="hidden" name="order_product_id" value="<?php echo $row["order_product_id"]; ?>">
 							<td><button type="submit" class="delete-button"><i class="fa fa-trash"></i></button></td>
 						</form>
-						<td><img src="<?php echo $row["image"]; ?>" class="cart-image"></td>
+						<td><img src="<?php echo '../'.$row["image"]; ?>" class="cart-image"></td>
 						<td><?php echo $row["name"]; ?></br>
 						<?php echo 'size: '.$row["size"]; ?></br>
 						<?php echo strtoupper($row["personalise"]);?></td>
@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			
 			?>
 			<tr>
-				<td colspan="5" class="tar" align="right">Total</td>
+				<td colspan="5" class="tar" align="right">商品總價</td>
 				<td align="left">
 					<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 		              if($_SESSION['currency'] == 'gbp'){
@@ -126,11 +126,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			</tr> -->
 		</table>
 		<br>
-		<button class="left"><a href="shop-test.php" >Continue Shopping</a></button>
-		<button class="right"><a href="checkout.php" class="right">Checkout</a></button>
+		<button class="left"><a href="shop-test.php" >繼續購物</a></button>
+		<button class="right"><a href="checkout.php" class="right">結算</a></button>
 		<?php } else{?>
 		<p>You have no products in your cart</p>
-		<button class="left"><a href="shop-test.php" >Go to shop</a></button>
+		<button class="left"><a href="shop-test.php">Go to shop</a></button>
 		<?php }?>
 		</div>
 		

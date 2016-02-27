@@ -1,10 +1,10 @@
 <?php
 	include ('header.php');
 	include ('sidebar.php');
-	include ('connect.php');
+	include ('../connect.php');
 
-	$sql = mysqli_query($conn, 'UPDATE orders SET  status = 1 WHERE order_id = '.$_SESSION['order_id']);
-	
+	$$sql = mysqli_query($conn, 'UPDATE orders SET  status = 1 WHERE order_id = '.$_SESSION['order_id']);
+
 	$msg = "yapi_tid = ". $_GET['yapi_tid'] ."\n";
 
 	$result = mysqli_query($conn, 'select order_product.*, products.* from order_product INNER JOIN products ON order_product.product_no = products.product_no where order_product.order_id='.$_SESSION['order_id']);
@@ -14,6 +14,7 @@
 
 	    	$msg .= "Products: \n".$row["name"]." - ".$row["product_no"]." - Size: ".$row["size"]." - Personalise: ".$row["personalise"]." - Quantity: ".$row["quantity"]."\n";	    
 	    }
+
 	}
 	$query_customer = mysqli_query($conn, "SELECT * FROM customer WHERE customer_no ='".$_SESSION['customer_no']."'");
 	$customer = mysqli_fetch_object($query_customer);
@@ -35,7 +36,7 @@
 <div id="main">
 	<div class="content-center">
 	<?php if($mail){ ?>
-		<h2>Thank you! A confirmation email will be sent to you once your order has been successfully processed.</h2>
+		<h2>謝謝！您的訂單已成功接受處理，您會收到我們的電子郵件。</h2>
 	<?php } ?>
 
 	</div>

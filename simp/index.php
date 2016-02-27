@@ -1,10 +1,9 @@
-   
-    <?php
-      include ('header.php');
-      include ('sidebar.php');
-    ?>
-    
+<?php
+  include ('header.php');
+  include ('sidebar.php');
+?>    
     <div class="feature section">
+      <img class="bg" src="../img/yuzhe-bg.jpg" alt="feature image"> 
       <img class="bg" src="../img/yuzhe-bg.jpg" alt="feature image"> 
     </div>
     <div id="section1" class="section" style="">
@@ -41,6 +40,11 @@
       </div>
     </div>
     <div id="section3" class="section clearfix">
+      <div class="intro">
+        <h1><a href="shop.php">购物</a></h1>
+      </div>    
+    </div>
+    <div id="section4" class="section clearfix">
         
           <div class="intro">
             <p>敬请期待</p>
@@ -49,10 +53,11 @@
            </p>
            <p>或者可以通过以下社交媒体软件找到我们</p>
            <div id="info-social">
-              <a href="https://www.facebook.com/pages/Yuzhe-Studios/868641533158899?fref=ts" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-              <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-              <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-              <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
+              <a href="https://www.facebook.com/yuzhestudios?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram"></i></a>
+            <!-- <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter"></i></a> -->
+            <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo"></i></a>     
+            <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxPosition');"><i class="fa fa-weixin"></i></a> 
             </div>
           </div>      
       </div>

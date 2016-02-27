@@ -1,7 +1,7 @@
 <?php
   include ('header.php');
   include ('sidebar.php');
-  require 'connect.php';
+  require '../connect.php';
   $result = mysqli_query($conn, 'select * from products where product_id='.$_GET['id']);
   $product = mysqli_fetch_object($result);
 
@@ -24,13 +24,14 @@
 			$_SESSION['order_id'] = 1;
 		}
   	}  	
+
   	$id = $_SESSION['order_id'];
 
 	$sql = "INSERT INTO order_product (order_id, product_no, size, personalise, quantity, subtotal)
 	VALUES ('$id', '$product_no', '$size', '$personalise', '$quantity', '$subtotal')";
 
 	if ($conn->query($sql) === TRUE) {
-		$_SESSION['message'] = 'Product added to <a href="cart.php">cart</a>';
+		$_SESSION['message'] = '商品加入<a href="cart.php">購物車</a>';
 	    echo '<script>window.location.href = "product.php?id='. $_POST['id'] .'";</script>';
 	    //exiting allows unsetting session message
 	    exit;
@@ -42,11 +43,12 @@
   }
 ?>
 		<div id="main">
+
 			<div class="product-imgs">
-				<img src="<?php echo $product->image; ?>" class="product-img"  alt="<?php echo $product->name; ?>">
-				<img src="<?php echo $product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
-				<img src="<?php echo $product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
-				<img src="<?php echo $product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image; ?>" class="product-img"  alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
 			</div>
 			<div class="product-info">
 			<?php 		
@@ -75,7 +77,7 @@
 	              echo '<p>¥'. $product->price. '</p>';
 	            }
 	            ?>
-				<p>Size:
+				<p>尺碼:
 					<select name="size">
 					  <option value="XS">XS</option>
 					  <option value="S">S</option>
@@ -83,9 +85,9 @@
 					  <option value="L">L</option>
 					</select>
 					</p>
-					<p><a id="size-guide" href="#" title="">Size guide</a></p>
+					<p><a id="size-guide" href="#" title="">尺寸對照表</a></p>
 					</p>
-					<p>Personalisation <a id="personalise" href="#" title="">(i)</a>
+					<p>個性化定制 <a id="personalise" href="#" title="">(i)</a>
 					
 					<input name="personalise" type="checkbox" class="personalise"/>
 					</p>
@@ -94,15 +96,15 @@
 						<input type="text" pattern="[A-Za-z]+" title="Letters only" name="p2" maxlength="1">
 						<input type="text" pattern="[A-Za-z]+" title="Letters only" name="p3" maxlength="1">
 					</div>
-					<p><label for="quantity">Quantity: </label><input type="number" id="quantity" name="quantity" value="1" min="1" max="3"></p>
+					<p><label for="quantity">數量: </label><input type="number" id="quantity" name="quantity" value="1" min="1" max="3"></p>
 					
 					<div id='jqxexpander'>
-				        <div>Details</div>
+				        <div>詳細說明</div>
 				        <!--Content-->
 				        <div><?php echo $product->description; ?></div>
 				    </div>
 				    <br>
-				    <input type="submit" value="Add to Cart">
+				    <input type="submit" value="添加到購物車">
 			    </form>
 			</div>
 		</div>

@@ -114,6 +114,10 @@ a:-webkit-any-link{
 	color: red;
 	font-weight: bold;
 }
+.message a{
+	color: inherit;
+	text-decoration: underline;
+}
 .lang-mobile{
 	display: none;
 }
@@ -618,6 +622,9 @@ td{
 	}
 	#sidebar-content{
 		display: none;
+	}
+	.content-center {
+	    margin-left: 0;
 	}
 	#header .cart span{
 		display: none;

@@ -21,22 +21,18 @@
       </div>
       <div class="about-block">
         <h1>Proud to be made in China</h1>
-        <p>We aspire to change the negative preconception of ‘Made in China’. 
-        Chinese history consists of many original creations and ideas – we wish to bring this 
-        standard back with our studio.</p>
+        <p>We aspire to change the negative preconception of ‘Made in China’. Chinese history consists of many original creations and ideas – we wish to bring this standard back with our studio.</p>
       </div>
       
       <div class="about-block">
         <h1>Craftsmanship with a Quirky Twist</h1>
-        <p>In house artisans and seamstresses will lovingly handcraft your garment at our own studio. We will combine 
-        traditional craftsmanship handwork with unique, modern and quirky details. The finest fabrics and materials 
+        <p>In house artisans and seamstresses will lovingly handcraft your garment at our own studio. We will combine traditional craftsmanship handwork with unique, modern and quirky details. The finest fabrics and materials 
         will be used.</p>
       </div>
 
       <div class="about-block">
         <h1>Enduring Collections</h1>
-        <p>We never chase the latest trends. New collections are gradual developments from previous collections. We have confidence in our 
-        products, so we will never undertake discount promotions through our own retail channels.</p>
+        <p>We never chase the latest trends. New collections are gradual developments from previous collections. We have confidence in our products, so we will never undertake discount promotions through our own retail channels.</p>
       </div>
 
       <div class="about-block">
@@ -57,10 +53,11 @@
            </p>
            <p>Alternatively you can find us on the social media listed below</p>
            <div id="info-social">
-              <a href="https://www.facebook.com/pages/Yuzhe-Studios/868641533158899?fref=ts" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-              <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-              <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-              <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
+             <a href="https://www.facebook.com/yuzhestudios?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram"></i></a>
+            <!-- <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter"></i></a> -->
+            <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo"></i></a>     
+            <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxPosition');"><i class="fa fa-weixin"></i></a> 
             </div>
           </div>  
           <!-- <div id="slider">
@@ -74,7 +71,6 @@
             </ul>  
           </div> -->  
     </div>
-     
     
 <?php
  include('footer.php')
