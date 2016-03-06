@@ -126,7 +126,6 @@ include ('sidebar.php');
 	    	<h3>Taxes/Duty</h3>
 			<p>All deliveries within Mainland China include tax and duty.</p>
 			<p>Orders outside Mainland China could be subject to duty and/or taxes levied by the importing country. By placing an order with Yuzhe Studios, you acknowledge that you understand this and that you are responsible for any such charges. Should you refuse to pay these charges, your order will be returned to Yuzhe Studios and you will be refunded less any shipping, transactional and import fees associated with the return.</p>
-			<p>Yuzhe Studios has a process that can avoid import duty for international deliveries, should you wish to undertake this process, please email <a href="mailto:info@yuzhestudios.com">info@yuzhestudios.com</a> to find out more.</p>
 	    </div>
 	</div>		
 </div>

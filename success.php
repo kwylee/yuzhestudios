@@ -3,7 +3,19 @@
 	include ('sidebar.php');
 	include ('connect.php');
 
-	$sql = mysqli_query($conn, 'UPDATE orders SET  status = 1 WHERE order_id = '.$_SESSION['order_id']);
+	$order_id = $_SESSION['order_id'];
+
+	$update_order = "UPDATE orders SET  status = 1 
+	WHERE order_id = '$order_id' 
+	AND status = 0 
+	ORDER BY order_count DESC
+	LIMIT 1";
+
+	if ($conn->query($update_order) === TRUE) {
+	    echo "Order status updated";
+	} else {
+	    echo "Error: " . $sql . "<br>" . $conn->error;
+	}
 	
 	$msg = "yapi_tid = ". $_GET['yapi_tid'] ."\n";
 
@@ -15,6 +27,11 @@
 	    	$msg .= "Products: \n".$row["name"]." - ".$row["product_no"]." - Size: ".$row["size"]." - Personalise: ".$row["personalise"]." - Quantity: ".$row["quantity"]."\n";	    
 	    }
 	}
+	$order_total = mysqli_query($conn, "SELECT * FROM orders WHERE order_id ='".$order_id."' AND status = 1 LIMIT 1");
+	$total = mysqli_fetch_object($order_total);
+
+	$msg .= "\nTotal Paid: ¥".$total->total;
+
 	$query_customer = mysqli_query($conn, "SELECT * FROM customer WHERE customer_no ='".$_SESSION['customer_no']."'");
 	$customer = mysqli_fetch_object($query_customer);
 
@@ -36,8 +53,9 @@
 	<div class="content-center">
 	<?php if($mail){ ?>
 		<h2>Thank you! A confirmation email will be sent to you once your order has been successfully processed.</h2>
+		<h2>謝謝！您的訂單已成功接受處理，您會收到我們的電子郵件。</h2>
+		<h2>谢谢！您的订单已成功接受处理，您会收到我们的电子邮件。</h2>
 	<?php } ?>
-
 	</div>
 </div>
 

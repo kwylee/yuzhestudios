@@ -2,6 +2,8 @@
 	include ('header.php');
 	include ('sidebar.php');
 	include ('../connect.php');
+	mysqli_query($conn, "SET NAMES 'utf8'");
+	mysqli_query($conn, "SET CHARACTER SET 'utf8'");
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
@@ -43,7 +45,6 @@
 
 		$order_id = $_SESSION['order_id'];
 		$customer_no = $_SESSION['customer_no'];
-		$total = $_SESSION['total'];
 
 		$query_order = "INSERT INTO orders (order_id, customer_no, total)
 		VALUES ('$order_id', '$customer_no', '$total')";
@@ -66,70 +67,78 @@
 		}
 		$customer = mysqli_fetch_object($query_customer);
 	}	
+	$tempTotal = $_SESSION['total'];
+	if(isset($customer->country) && ($customer->country == 'china' || $customer->country == 'hong kong' || $customer->country == 'taiwan' || $customer->country == 'macau')){
+		$total = $_SESSION['total'];
+	}else{
+		$total = $tempTotal + 100;
+	}
 ?>
 <div id="main">
 	<div class="content-half">
-		<h2>Confirmation</h2>
+		<h2>确认订单信息</h2>
 		<?php if (isset($result) && mysqli_num_rows($result) > 0) {
 		?>
-		<table cellpadding="4">
-			<tr>
-				<th>Image</th>
-				<th>Product info</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Sub Total</th>
-			</tr>
+		<div class="row shopping-cart">
+			<div class="col-12">
+				<div class="col-3">照片</div>
+				<div class="col-3">内容</div>
+				<div class="col-2">价格</div>
+				<div class="col-2">数量</div>
+				<div class="col-2">小计</div>
+			</div>
 			<?php 
 			    // output data of each row
 			    while($row = mysqli_fetch_assoc($result)) {
 			    ?>
-			    	<tr>
-						<td><img src="<?php echo '../'.$row["image"]; ?>" class="cart-image"></td>
-						<td><?php echo $row["name"]; ?></br>
-						<?php echo 'Size: '.$row["size"]; ?></br>
-						<?php echo strtoupper($row["personalise"]);?></td>
+			    	<div class="col-12">
+			    		<form></form>
+						<div class="col-3"><img src="<?php echo '../'.$row["image"].'.jpg'; ?>" class="cart-image"></div>
+						<div class="col-3 info">
+							<?php echo $row["name_simp"]; ?></br>
+							<?php echo '尺码: '.$row["size"]; ?></br>
+							<?php echo strtoupper($row["personalise"]);?>
+						</div>
 						
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
-			                echo '<td>£';
+			                echo '<div class="col-2">£';
 			              }
 			              elseif($_SESSION['currency'] == 'usd'){
-			                echo '<td><span style="font-family: Arial;">$</span>';
+			                echo '<div class="col-2"><span style="font-family: Arial;">$</span>';
 			              }
 			              elseif($_SESSION['currency'] == 'eur'){
-			                echo '<td>€';
+			                echo '<div class="col-2">€';
 			              }
-			              echo convertCurrency($row["price"], "CNY", $_SESSION['currency']). '</td>';
+			              echo convertCurrency($row["price"], "CNY", $_SESSION['currency']). '</div>';
 			            }else{ 
-			              echo '<td>¥'. $row["price"]. '</td>';
+			              echo '<div class="col-2">¥'. $row["price"]. '</div>';
 			            }
 			            ?>
-
-						<td><?php echo $row["quantity"]; ?></td>
+						<div class="col-2"><?php echo $row["quantity"]; ?></div>
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
-			                echo '<td>£';
+			                echo '<div class="col-2">£';
 			              }
 			              elseif($_SESSION['currency'] == 'usd'){
-			                echo '<td><span style="font-family: Arial;">$</span>';
+			                echo '<div class="col-2"><span style="font-family: Arial;">$</span>';
 			              }
 			              elseif($_SESSION['currency'] == 'eur'){
-			                echo '<td>€';
+			                echo '<div class="col-2">€';
 			              }
-			              echo convertCurrency($row["subtotal"], "CNY", $_SESSION['currency']). '</td>';
+			              echo convertCurrency($row["subtotal"], "CNY", $_SESSION['currency']). '</div>';
 			            }else{ 
-			              echo '<td>¥'. $row["subtotal"]. '</td>';
+			              echo '<div class="col-2">¥'. $row["subtotal"]. '</div>';
 			            }
 			            ?>
-					</tr>
+					</div>
 			    <?php
 			    }
 			
 			?>
-			<tr>
-				<td colspan="4" class="tar" align="right">Shipping</td>
-				<td align="left">
+			<div class="col-12">
+				<div class="col-10" class="tar" align="right">发货</div>
+				<div class="col-2">
 					<?php 
 					$shipping = 100;
 					if(isset($customer->country) && ($customer->country == 'china' || $customer->country == 'hong kong' || $customer->country == 'taiwan' || $customer->country == 'macau')){
@@ -151,11 +160,11 @@
 					 	echo convertCurrency($shipping, "CNY", $_SESSION['currency']);
 					}
 		            ?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4" class="tar" align="right">Total</td>
-				<td align="left">
+				</div>
+			</div>
+			<div class="col-12">
+				<div class="col-10" class="tar" align="right">总价</div>
+				<div class="col-2">
 					<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 		              if($_SESSION['currency'] == 'gbp'){
 		                echo '£';
@@ -166,16 +175,16 @@
 		              elseif($_SESSION['currency'] == 'eur'){
 		                echo '€';
 		              }
-		              echo convertCurrency($_SESSION['total'], "CNY", $_SESSION['currency']).' ≡ ¥'. $_SESSION['total'];
+		              echo convertCurrency($total, "CNY", $_SESSION['currency']).' ≡ ¥'. $total;
 		            }else{ 
-		              echo '¥'. $_SESSION['total'];
+		              echo '¥'. $total;
 		            }
 		            ?>
-				</td>
-			</tr>
-		</table>
+				</div>
+			</div>
+		</div>
 		<div>			
-			<h3>Customer info</h3>
+			<h3>顾客信息</h3>
 			<p><?php echo ucwords($customer->name); ?></br>
 			<?php echo $customer->email; ?></br>
 			<?php echo ucwords($customer->address_line1); ?></br>
@@ -187,7 +196,7 @@
 			<?php echo $customer->tel; ?></p>
 		</div>
 		<?php
-		$sign = strtoupper('d747829c984982e81fcd3bb515831cd7yuzhestudios@gmail.com'. $_SESSION['order_id'] . $_SESSION['total'] .'CNYhttp://yuzhestudios.com/cart.php11');
+		$sign = strtoupper('d747829c984982e81fcd3bb515831cd7yuzhestudios@gmail.com'. $_SESSION['order_id'] . $total .'CNYhttp://yuzhestudios.com/cart.php11');
 		$sign_hash = md5($sign);
 		?>
 		<form action="https://yoopay.cn/yapi" method="POST">
@@ -198,7 +207,7 @@
 			<input type="hidden" name="tid" value="<?php echo $_SESSION['order_id']; ?>">
 			<input type="hidden" name="item_name" value="yuzhestudios">
 			<input type="hidden" name="item_body" value="clothing">
-			<input type="hidden" name="item_price" value="<?php echo $_SESSION['total']; ?>">
+			<input type="hidden" name="item_price" value="<?php echo $total; ?>">
 			<input type="hidden" name="item_currency" value="CNY">
 			<input type="hidden" name="payment_method" value="1;2;5;6;7">
 			<input type="hidden" name="customer_name" value="<?php echo $customer->name; ?>">
@@ -209,8 +218,8 @@
 			<input type="hidden" name="sandbox_target_status" value="1">
 			<input type="hidden" name="invoice" value="1">
 			<input type="hidden" name="sign" value="<?php echo $sign_hash; ?>">
-			<input type="submit" value="Pay" style="width:auto;"></br>
-			<span class="font-3">You will be directed to our secure payment partner, Yoopay, to complete payment</span>
+			<input type="submit" value="付款" style="width:auto;"></br>
+			<span class="font-3">您将会跳转至我们的合作付款平台“友付”继续完成支付</span>
 		</form>
 		<?php }else{ 
 			echo '<script>window.location.href = "shop.php";</script>';

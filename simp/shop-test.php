@@ -1,6 +1,8 @@
 <?php
   include ('header.php');
   include ('sidebar.php');
+  mysqli_query($conn, "SET NAMES 'utf8'");
+  mysqli_query($conn, "SET CHARACTER SET 'utf8'");
   $result = mysqli_query($conn, 'select * from products');
 ?>
     <div id="main">
@@ -9,10 +11,10 @@
         <div class="shop">
         <a href="product.php?id=<?php echo $product->product_id;?>">
           <div class="shop-img">
-            <img src="<?php echo '../'.$product->image; ?>" alt="<?php echo $product->name; ?>">
+            <img src="<?php echo '../'.$product->image.'.jpg'; ?>" alt="<?php echo $product->name; ?>">
           </div>
           <div class="shop-info">
-            <p><strong><?php echo $product->name; ?></strong></p>
+            <p><strong><?php echo $product->name_simp; ?></strong></p>
             <?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
               if($_SESSION['currency'] == 'gbp'){
                 echo '<p>£';

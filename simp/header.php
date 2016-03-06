@@ -37,33 +37,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link rel="icon" href="../img/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="../css/main.css"> 
+        <link rel="stylesheet" type="text/css" href="../css/main.css?v=5"> 
         <link rel="stylesheet" type="text/css" href="../css/jqx.base.css"> 
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-        
-        
-        <script type="text/javascript">
-            <!--
-                function toggle_visibility(id) {
-                   var e = document.getElementById(id);
-                   if(e.style.display == 'block')
-                      e.style.display = 'none';
-                   else
-                      e.style.display = 'block';
-                }
-            //-->
-        </script>
-        
+              
     </head>
-    <body>
+    <body class="simp">
         <div id="popupBoxPosition" style="display:none;">
             <div class="popupBoxWrapper">
                 <div class="popupBoxContent">
                     <p>WeChat QR code</p>
                     <img src="../img/wechatqr.jpg"/>
                     <button><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxPosition');">Close</a></button>
+                </div>
+            </div>
+        </div> 
+        <div id="popupBoxImage" style="display:none;">
+            <div class="popupBoxWrapper">
+                <div class="popupBoxContent">
+                    <img class="large-image" src=""/>
+                    <button><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxImage');">Close</a></button>
                 </div>
             </div>
         </div> 
@@ -75,9 +70,9 @@
                 <a class="space-right" href="../simp">简体中文</a>
                 </div>
                 <div class="col-5 lang-mobile">
-                    <a href="">Eng</a> /
-                    <a href="trad">繁体</a> /
-                    <a href="simp">简体</a>
+                    <a href="..">Eng</a> /
+                    <a href="../trad">繁体</a> /
+                    <a href="../simp">简体</a>
                 </div>
                 <div class="col-2 tac cart">
                     <a  href="cart.php"><i class="fa fa-shopping-cart"></i><span>购物袋</span></a>

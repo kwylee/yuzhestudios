@@ -2,6 +2,9 @@
   include ('header.php');
   include ('sidebar.php');
   require '../connect.php';
+  mysqli_query($conn, "SET NAMES 'utf8'");
+  mysqli_query($conn, "SET CHARACTER SET 'utf8'");
+
   $result = mysqli_query($conn, 'select * from products where product_id='.$_GET['id']);
   $product = mysqli_fetch_object($result);
 
@@ -45,10 +48,10 @@
 		<div id="main">
 
 			<div class="product-imgs">
-				<img src="<?php echo '../'.$product->image; ?>" class="product-img"  alt="<?php echo $product->name; ?>">
-				<img src="<?php echo '../'.$product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
-				<img src="<?php echo '../'.$product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
-				<img src="<?php echo '../'.$product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image.'.jpg'; ?>" class="product-img"  alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image.'-2.jpg'; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image.'-3.jpg'; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo '../'.$product->image.'-4.jpg'; ?>" class="product-img" alt="<?php echo $product->name; ?>">
 			</div>
 			<div class="product-info">
 			<?php 		
@@ -57,7 +60,8 @@
 				unset($_SESSION['message']);					
 			}
 			?>
-				<h1><?php echo $product->name; ?></h1>
+				<h1><?php echo $product->name_trad; ?></h1>
+				<p class="prod-no"><?php echo $product->product_no; ?></p>
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 				<input type="hidden" name="id" value="<?php echo $product->product_id; ?>">
 				<input type="hidden" name="product_no" value="<?php echo $product->product_no; ?>">
@@ -101,7 +105,7 @@
 					<div id='jqxexpander'>
 				        <div>詳細說明</div>
 				        <!--Content-->
-				        <div><?php echo $product->description; ?></div>
+				        <div><?php echo $product->description_trad; ?></div>
 				    </div>
 				    <br>
 				    <input type="submit" value="添加到購物車">

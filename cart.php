@@ -22,78 +22,85 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 }
 
 ?>
-	<div id="main">
-		<h2>Shopping Cart</h2>
-		<?php 
-		/*$cart = implode(unserialize(serialize($_SESSION['cart'])));
-		print_r($cart);
-		if(isset($cart) || $cart != '' || !empty( $cart )){ */
-		?>
-		<div class="content-half">
+<div id="main">
+	<h2>Shopping Cart</h2>
+	<?php 
+	/*$cart = implode(unserialize(serialize($_SESSION['cart'])));
+	print_r($cart);
+	if(isset($cart) || $cart != '' || !empty( $cart )){ */
+	?>
+	<div class="content-half">
 		<?php if (isset($result) && mysqli_num_rows($result) > 0) {
 		?>
-		<table cellpadding="4">
-			<tr>
-				<th></th>
-				<th>Image</th>
-				<th>Info</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Sub Total</th>
-			</tr>
+		
+		<div class="row shopping-cart">
+			<div class="col-12">
+				<div class="col-1 cart-options">options</div>
+				<div class="col-2">Image</div>
+				<div class="col-3">Info</div>
+				<div class="col-2">Price</div>
+				<div class="col-2">Quantity</div>
+				<div class="col-2">Sub Total</div>
+			</div>
 			<?php 
 			    // output data of each row
 			    while($row = mysqli_fetch_assoc($result)) {
 			    ?>
-			    	<tr>
+			    	<div class="col-12">
 			    		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 				    		<input type="hidden" name="order_product_id" value="<?php echo $row["order_product_id"]; ?>">
-							<td><button type="submit" class="delete-button"><i class="fa fa-trash"></i></button></td>
+							<div class="col-1">
+								<button type="submit" class="delete-button"><i class="fa fa-trash"></i></button>
+							</div>
 						</form>
-						<td><img src="<?php echo $row["image"]; ?>" class="cart-image"></td>
-						<td><?php echo $row["name"]; ?></br>
-						<?php echo 'size: '.$row["size"]; ?></br>
-						<?php echo strtoupper($row["personalise"]);?></td>
+						<div class="col-2"><img src="<?php echo $row["image"].'.jpg'; ?>" class="cart-image"></div>
+						<div class="col-3 info">
+							<?php echo '<a href="product.php?id='.$row["product_id"].'">'.$row["name"].'</a>'; ?></br>
+							<?php if($row["size"] != '0'){
+								echo 'size: '.$row["size"].'</br>';
+							}?>
+							<?php echo strtoupper($row["personalise"]);?>
+						</div>
 						
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
-			                echo '<td>£';
+			                echo '<div class="col-2">£';
 			              }
 			              elseif($_SESSION['currency'] == 'usd'){
-			                echo '<td><span style="font-family: Arial;">$</span>';
+			                echo '<div class="col-2"><span style="font-family: Arial;">$</span>';
 			              }
 			              elseif($_SESSION['currency'] == 'eur'){
-			                echo '<td>€';
+			                echo '<div class="col-2">€';
 			              }
-			              echo convertCurrency($row["price"], "CNY", $_SESSION['currency']). '</td>';
+			              echo convertCurrency($row["price"], "CNY", $_SESSION['currency']). '</div>';
 			            }else{ 
-			              echo '<td>¥'. $row["price"]. '</td>';
+			              echo '<div class="col-2">¥'. $row["price"]. '</div>';
 			            }
 			            ?>
-						<td><?php echo $row["quantity"]; ?></td>
+						<div class="col-2"><?php echo $row["quantity"]; ?></div>
 						<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 			              if($_SESSION['currency'] == 'gbp'){
-			                echo '<td>£';
+			                echo '<div class="col-2">£';
 			              }
 			              elseif($_SESSION['currency'] == 'usd'){
-			                echo '<td><span style="font-family: Arial;">$</span>';
+			                echo '<div class="col-2"><span style="font-family: Arial;">$</span>';
 			              }
 			              elseif($_SESSION['currency'] == 'eur'){
-			                echo '<td>€';
+			                echo '<div class="col-2">€';
 			              }
-			              echo convertCurrency($row["subtotal"], "CNY", $_SESSION['currency']). '</td>';
+			              echo convertCurrency($row["subtotal"], "CNY", $_SESSION['currency']). '</div>';
 			            }else{ 
-			              echo '<td>¥'. $row["subtotal"]. '</td>';
+			              echo '<div class="col-2">¥'. $row["subtotal"]. '</div>';
 			            }
 			            ?>
-					</tr>
+					</div>
 			    <?php
 			    }
 			
 			?>
-			<tr>
-				<td colspan="5" class="tar" align="right">Total</td>
-				<td align="left">
+			<div class="col-12">
+				<div class="col-10" class="tar" align="right">Total</div>
+				<div class="col-2">
 					<?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
 		              if($_SESSION['currency'] == 'gbp'){
 		                echo '£';
@@ -109,32 +116,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		              echo '¥'. $sum;
 		            }
 		            ?>
-				</td>
-			</tr>
-			<!-- <tr>
-				<td colspan="4" align="right"></td>
-				<td align="left">
-					<form name="_xclick" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-					    <input type="hidden" name="cmd" value="_xclick">
-					    <input type="hidden" name="business" value="flower_rosey_karen@hotmail.com">
-					    <input type="hidden" name="currency_code" value="GBP">
-					    <input type="hidden" name="item_name" value="yuzhe studios">
-					    <input type="hidden" name="amount" value="<?php echo $s; ?>">
-					    <input class="paypal" type="image" src="http://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-					</form>
-				</td>
-			</tr> -->
-		</table>
-		<br>
-		<button class="left"><a href="shop-test.php" >Continue Shopping</a></button>
-		<button class="right"><a href="checkout.php" class="right">Checkout</a></button>
+				</div>
+			</div>
+			<div class="col-12 pb">
+				<button class="left"><a href="shop-test.php" >Continue Shopping</a></button>
+				<button class="right"><a href="checkout.php" class="right">Checkout</a></button>
+			</div>
+		</div>
 		<?php } else{?>
 		<p>You have no products in your cart</p>
 		<button class="left"><a href="shop-test.php" >Go to shop</a></button>
 		<?php }?>
-		</div>
-		
-		
+	</div>		
 </div>
 <?php	
 	include('footer.php')

@@ -4,8 +4,7 @@
     ?>
     
     <div class="feature section">
-      <img class="bg" src="../img/yuzhe-bg.jpg" alt="feature image"> 
-      <img class="bg" src="../img/yuzhe-bg.jpg" alt="feature image"> 
+      <img class="bg" src="../img/home-page-image.jpg" alt="feature image">
     </div>
     <div id="section1" class="section" style="">
       <img class="header-logo" src="../img/logo.png">
@@ -37,7 +36,7 @@
 
       <div class="about-block">
         <h1>個性化</h1>
-        <p>我們相信您的衣服應該“只屬於”您，所以我們在衣物標籤上為你們特別提供手工縫製的字母縮寫。</p>
+        <p>我們相信我們的工作室為您縫製的衣服應該專屬於您，因此我們為您手工配製個性化的名字首字母。您的個人衣服在下定單後會手工製作。因此為您製作的衣物是獨特的。</p>
       </div>
     </div>
     <div id="section3" class="section clearfix">
@@ -46,22 +45,23 @@
       </div>    
     </div>
     <div id="section4" class="section clearfix">
-          <div class="intro">
-            <p>樣品展示 - 敬請期待</p>
-            <p>如有疑問請聯繫我們
-           <a href="mailto:info@yuzhestudios.com">info@yuzhestudios.com</a>
-           </p>
-           <p>或者可以通過以下社交媒體軟件找到我們</p>
-           <div id="info-social">
-             <a href="https://www.facebook.com/yuzhestudios?fref=ts" target="_blank"><i class="fa fa-facebook"></i></a>
-            <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram"></i></a>
-            <!-- <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter"></i></a> -->
-            <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo"></i></a>     
-            <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxPosition');"><i class="fa fa-weixin"></i></a> 
-            </div>
-            </div>
-          </div>      
-      </div>
+        <div id="slider" style="max-width: 95%;">
+          <a href="#" class="control_next">>></a>
+          <a href="#" class="control_prev"><</a>
+          <ul>
+            <li><img src="../img/lookbook/1-compressor.jpg"></li>
+            <li><img src="../img/lookbook/2-compressor.jpg"></li>
+            <li><img src="../img/lookbook/3-compressor.jpg"></li>
+            <li><img src="../img/lookbook/4-compressor.jpg"></li>
+            <li><img src="../img/lookbook/5-compressor.jpg"></li>
+            <li><img src="../img/lookbook/6-compressor.jpg"></li>
+            <li><img src="../img/lookbook/7-compressor.jpg"></li>
+            <li><img src="../img/lookbook/8-compressor.jpg"></li>
+            <li><img src="../img/lookbook/9-compressor.jpg"></li>
+          </ul>  
+        </div> 
+    </div>      
+  </div>
 <?php
  include('footer.php')
 ?>

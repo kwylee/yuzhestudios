@@ -43,10 +43,10 @@
 ?>
 		<div id="main">
 			<div class="product-imgs">
-				<img src="<?php echo $product->image; ?>" class="product-img"  alt="<?php echo $product->name; ?>">
-				<img src="<?php echo $product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
-				<img src="<?php echo $product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
-				<img src="<?php echo $product->image; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo $product->image.'.jpg'; ?>" class="product-img"  alt="<?php echo $product->name; ?>">
+				<img src="<?php echo $product->image.'-2.jpg'; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo $product->image.'-3.jpg'; ?>" class="product-img" alt="<?php echo $product->name; ?>">
+				<img src="<?php echo $product->image.'-4.jpg'; ?>" class="product-img" alt="<?php echo $product->name; ?>">
 			</div>
 			<div class="product-info">
 			<?php 		
@@ -56,6 +56,7 @@
 			}
 			?>
 				<h1><?php echo $product->name; ?></h1>
+				<p class="prod-no"><?php echo $product->product_no; ?></p>
 				<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
 				<input type="hidden" name="id" value="<?php echo $product->product_id; ?>">
 				<input type="hidden" name="product_no" value="<?php echo $product->product_no; ?>">
@@ -77,10 +78,14 @@
 	            ?>
 				<p>Size:
 					<select name="size">
-					  <option value="XS">XS</option>
-					  <option value="S">S</option>
-					  <option value="M">M</option>
-					  <option value="L">L</option>
+						<?php if($product->size_option == 0){ ?>
+							<option value="XS">XS</option>
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+						<?php } elseif($product->size_option == 1){ ?>
+							<option value="0">One Size</option>
+						<?php } ?>
 					</select>
 					</p>
 					<p><a id="size-guide" href="#" title="">Size guide</a></p>
@@ -99,7 +104,7 @@
 					<div id='jqxexpander'>
 				        <div>Details</div>
 				        <!--Content-->
-				        <div><?php echo $product->description; ?></div>
+				        <div><?php echo utf8_decode($product->description); ?></div>
 				    </div>
 				    <br>
 				    <input type="submit" value="Add to Cart">
