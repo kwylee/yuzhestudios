@@ -119,13 +119,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				</div>
 			</div>
 			<div class="col-12 pb">
-				<button class="left"><a href="shop-test.php" >Continue Shopping</a></button>
+				<button class="left"><a href="shop.php" >Continue Shopping</a></button>
 				<button class="right"><a href="checkout.php" class="right">Checkout</a></button>
 			</div>
 		</div>
 		<?php } else{?>
 		<p>You have no products in your cart</p>
-		<button class="left"><a href="shop-test.php" >Go to shop</a></button>
+		<button class="left"><a href="shop.php" >Go to shop</a></button>
 		<?php }?>
 	</div>		
 </div>

@@ -1,26 +1,40 @@
 <?php
   include ('header.php');
   include ('sidebar.php');
+  $result = mysqli_query($conn, 'select * from products');
 ?>
-<div class="low-op section feature">
-	<img class="bg" src="img/yuzhe-bg.jpg" alt="feature image">  
-</div>
-<div class="shop-page section">
-	<img class="header-logo" src="img/logo.png">
-	<div class="intro">
-        <p>SHOP COMING SOON</p>
-        <p>For queries please contact us at
-       <a href="mailto:info@yuzhestudios.com">info@yuzhestudios.com</a>
-       </p>
-       <p>Alternatively you can find us on the social media listed below</p>
-       <div id="">
-          <a href="https://www.facebook.com/pages/Yuzhe-Studios/868641533158899?fref=ts" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
-          <a href="http://instagram.com/yuzhestudios" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-          <a href="https://twitter.com/yuzhestudios" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
-          <a href="http://www.weibo.com/u/5469563878?topnav=1&wvr=6&topsug=1" target="_blank"><i class="fa fa-weibo fa-2x"></i></a>
+    <div id="main">
+      <div class="shop-page-new clearfix">
+      <?php while ($product = mysqli_fetch_object($result)) { ?>
+        <div class="shop">
+        <a href="product.php?id=<?php echo $product->product_id;?>">
+          <div class="shop-img">
+            <img src="<?php echo $product->image.'.jpg'; ?>" alt="<?php echo $product->name; ?>">
+          </div>
+          <div class="shop-info">
+            <p><strong><?php echo $product->name; ?></strong></p>
+            <?php if(isset($_SESSION['currency']) && $_SESSION['currency'] != 'rmb'){
+              if($_SESSION['currency'] == 'gbp'){
+                echo '<p>£';
+              }
+              elseif($_SESSION['currency'] == 'usd'){
+                echo '<p style="font-family: Arial;">$';
+              }
+              elseif($_SESSION['currency'] == 'eur'){
+                echo '<p>€';
+              }
+              echo convertCurrency($product->price, "CNY", $_SESSION['currency']). '</p>';
+            }else{ 
+              echo '<p>¥'. $product->price. '</p>';
+            }
+            ?>
+          </div>
+          </a>
         </div>
-    </div>    	
-</div>
+        <?php } ?>
+      </div>
+    </div>
+
 <?php
-	include('footer.php');
+  include('footer.php')
 ?>

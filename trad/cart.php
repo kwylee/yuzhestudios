@@ -120,13 +120,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				</div>
 			</div>
 			<div class="col-12 pb">
-				<button class="left"><a href="shop-test.php" >繼續購物</a></button>
+				<button class="left"><a href="shop.php" >繼續購物</a></button>
 				<button class="right"><a href="checkout.php" class="right">結算</a></button>
 			</div>
 		</div>
 		<?php } else{?>
 		<p>您的購物車沒有物品</p>
-		<button class="left"><a href="shop-test.php" >購物</a></button>
+		<button class="left"><a href="shop.php" >購物</a></button>
 		<?php }?>
 	</div>		
 </div>

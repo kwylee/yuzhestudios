@@ -210,7 +210,8 @@
 			<?php echo $customer->tel; ?></p>
 		</div>
 		<?php
-		$sign = strtoupper('d747829c984982e81fcd3bb515831cd7yuzhestudios@gmail.com'. $_SESSION['order_id'] . $total .'CNYhttp://yuzhestudios.com/cart.php11');
+		//sign = app_key, seller_email, tid, item_price, item_currency, notify_url, sandbox, invoice
+		$sign = strtoupper('d747829c984982e81fcd3bb515831cd7yuzhestudios@gmail.com'. $_SESSION['order_id'] . $total .'CNYhttp://yuzhestudios.com/cart.php01');
 		$sign_hash = md5($sign);
 		?>
 		<form action="https://yoopay.cn/yapi" method="POST">
@@ -228,6 +229,7 @@
 			<input type="hidden" name="customer_email" value="<?php echo $customer->email; ?>">
 			<input type="hidden" name="notify_url" value="HTTP://YUZHESTUDIOS.COM/CART.PHP">
 			<input type="hidden" name="sandbox" value="0">
+			<input type="hidden" name="sandbox_target_status" value="1">
 			<input type="hidden" name="invoice" value="1">
 			<input type="hidden" name="sign" value="<?php echo $sign_hash; ?>">
 			<input type="submit" value="Pay" style="width:auto;"></br>

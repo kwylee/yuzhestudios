@@ -53,8 +53,6 @@
 	<div class="content-center">
 	<?php if($mail){ ?>
 		<h2>Thank you! A confirmation email will be sent to you once your order has been successfully processed.</h2>
-		<h2>謝謝！您的訂單已成功接受處理，您會收到我們的電子郵件。</h2>
-		<h2>谢谢！您的订单已成功接受处理，您会收到我们的电子邮件。</h2>
 	<?php } ?>
 	</div>
 </div>
