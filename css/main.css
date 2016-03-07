@@ -152,6 +152,7 @@ a:-webkit-any-link{
 }
 #section3 h1{
 	font-family: 'Covered By Your Grace', "KaiTi", cursive;
+	text-decoration: underline;
 }
 #section4{
 	/*background-color: #C0C0C0;*/
@@ -822,7 +823,7 @@ a.control_next {
 		background-color: #fff;
 	}
 	.shop{
-		width: 95%;
+		width: 45%;
 		margin: 10px 2.5%;
 	}
 	#main{
@@ -941,5 +942,9 @@ a.control_next {
 	  width: 320px;
 	  height: 213px;
 	  line-height: 213px;
+	}
+	.shop{
+		width: 95%;
+		margin: 10px 2.5%;
 	}
 }

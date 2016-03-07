@@ -30,18 +30,18 @@
 	$order_total = mysqli_query($conn, "SELECT * FROM orders WHERE order_id ='".$order_id."' AND status = 1 LIMIT 1");
 	$total = mysqli_fetch_object($order_total);
 
-	$msg .= "\nTotal Paid: ¥".$total->total;
+	$msg .= "\nTotal Paid: ".$total->total." (rmb)";
 
 	$query_customer = mysqli_query($conn, "SELECT * FROM customer WHERE customer_no ='".$_SESSION['customer_no']."'");
 	$customer = mysqli_fetch_object($query_customer);
 
 	$msg .= "\nCustomer info: \n".$customer->name."\n".$customer->email."\n".$customer->address_line1."\n".$customer->address_line2."\n".$customer->city."\n".$customer->prov_count."\n".$customer->country."\n".$customer->code."\n".$customer->tel;
 
-	// use wordwrap() if lines are longer than 70 characters
+	// use wordwrap() if lines are longer than 120 characters
 	$msg = wordwrap($msg,120);
 
 	// send email
-	$mail = mail("karenwylee@hotmail.co.uk","New order: Order id ". $_SESSION['order_id'],$msg);
+	$mail = mail("karenwylee@hotmail.co.uk,info@yuzhestudios.com","New order: Order id ". $_SESSION['order_id'],$msg);
 
 	if($mail){ 
 		session_destroy();

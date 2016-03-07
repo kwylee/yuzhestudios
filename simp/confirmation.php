@@ -66,13 +66,27 @@
 			echo '<script>window.location.reload();</script>';	
 		}
 		$customer = mysqli_fetch_object($query_customer);
+		if(!isset($customer->country) || empty($customer->country)){
+			echo '<script>window.location.reload();</script>';
+		}
+		elseif($customer->country == 'china' || $customer->country == 'hong kong' || $customer->country == 'taiwan' || $customer->country == 'macau'){
+			$total = $_SESSION['total'];
+		}else{
+			$total = $_SESSION['total'] + 100;
+			$update_order = "UPDATE orders SET  total = '$total' 
+			WHERE order_id = '$order_id' 
+			AND status = 0 
+			ORDER BY order_count DESC
+			LIMIT 1";
+
+			if ($conn->query($update_order) === TRUE) {
+			    echo "Order total updated";
+			} else {
+			    echo "Error: " . $sql . "<br>" . $conn->error;
+			}
+		}
 	}	
-	$tempTotal = $_SESSION['total'];
-	if(isset($customer->country) && ($customer->country == 'china' || $customer->country == 'hong kong' || $customer->country == 'taiwan' || $customer->country == 'macau')){
-		$total = $_SESSION['total'];
-	}else{
-		$total = $tempTotal + 100;
-	}
+	
 ?>
 <div id="main">
 	<div class="content-half">
