@@ -1,0 +1,133 @@
+﻿Merge remote-tracking branch 'origin/master'
+
+# Conflicts:
+#	img/lookbook/1-compressor.jpg
+#	img/lookbook/2-compressor.jpg
+#	img/lookbook/3-compressor.jpg
+#	img/lookbook/4-compressor.jpg
+#	img/lookbook/6-compressor.jpg
+#	img/lookbook/7-compressor.jpg
+#	img/lookbook/8-compressor.jpg
+#	img/lookbook/9-compressor.jpg
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 1 different commit each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes not staged for commit:
+#	modified:   css/jqx.base.css
+#	modified:   css/main.css
+#	modified:   img/Y16S102201-2.jpg
+#	modified:   img/Y16S102201-3.jpg
+#	modified:   img/Y16S102201-4.jpg
+#	modified:   img/Y16S102201.jpg
+#	modified:   img/Y16S102403-2.jpg
+#	modified:   img/Y16S102403-3.jpg
+#	modified:   img/Y16S102403-4.jpg
+#	modified:   img/Y16S102403.jpg
+#	modified:   img/Y16S112003-2.jpg
+#	modified:   img/Y16S112003-3.jpg
+#	modified:   img/Y16S112003-4.jpg
+#	modified:   img/Y16S112003.jpg
+#	modified:   img/Y16S112009-2.jpg
+#	modified:   img/Y16S112009-3.jpg
+#	modified:   img/Y16S112009-4.jpg
+#	modified:   img/Y16S112009.jpg
+#	modified:   img/Y16S112105-2.jpg
+#	modified:   img/Y16S112105-3.jpg
+#	modified:   img/Y16S112105-4.jpg
+#	modified:   img/Y16S112105.jpg
+#	modified:   img/Y16S112110-2.jpg
+#	modified:   img/Y16S112110-3.jpg
+#	modified:   img/Y16S112110-4.jpg
+#	modified:   img/Y16S112110.jpg
+#	modified:   img/Y16S201502-2.jpg
+#	modified:   img/Y16S201502-3.jpg
+#	modified:   img/Y16S201502-4.jpg
+#	modified:   img/Y16S201502.jpg
+#	modified:   img/Y16S202302-2.jpg
+#	modified:   img/Y16S202302-3.jpg
+#	modified:   img/Y16S202302-4.jpg
+#	modified:   img/Y16S202302.jpg
+#	modified:   img/Y16S202303-2.jpg
+#	modified:   img/Y16S202303-3.jpg
+#	modified:   img/Y16S202303-4.jpg
+#	modified:   img/Y16S202303.jpg
+#	modified:   img/Y16S301701-2.jpg
+#	modified:   img/Y16S301701-3.jpg
+#	modified:   img/Y16S301701-4.jpg
+#	modified:   img/Y16S301701.jpg
+#	modified:   img/Y16S301708-2.jpg
+#	modified:   img/Y16S301708-3.jpg
+#	modified:   img/Y16S301708-4.jpg
+#	modified:   img/Y16S301708.jpg
+#	modified:   img/Y16S401202-2.jpg
+#	modified:   img/Y16S401202-3.jpg
+#	modified:   img/Y16S401202-4.jpg
+#	modified:   img/Y16S401202.jpg
+#	modified:   img/Y16S401302-2.jpg
+#	modified:   img/Y16S401302-3.jpg
+#	modified:   img/Y16S401302-4.jpg
+#	modified:   img/Y16S401302.jpg
+#	modified:   img/Y16S501801-2.jpg
+#	modified:   img/Y16S501801-3.jpg
+#	modified:   img/Y16S501801-4.jpg
+#	modified:   img/Y16S501801.jpg
+#	modified:   img/Y16S501802-2.jpg
+#	modified:   img/Y16S501802-3.jpg
+#	modified:   img/Y16S501802-4.jpg
+#	modified:   img/Y16S501802.jpg
+#	modified:   img/Y16S501803-2.jpg
+#	modified:   img/Y16S501803-3.jpg
+#	modified:   img/Y16S501803-4.jpg
+#	modified:   img/Y16S501803.jpg
+#	modified:   img/Y16S601901-2.jpg
+#	modified:   img/Y16S601901-3.jpg
+#	modified:   img/Y16S601901-4.jpg
+#	modified:   img/Y16S601901.jpg
+#	modified:   img/Y16S602703-2.jpg
+#	modified:   img/Y16S602703-3.jpg
+#	modified:   img/Y16S602703-4.jpg
+#	modified:   img/Y16S602703.jpg
+#	modified:   img/Y16S902601-2.jpg
+#	modified:   img/Y16S902601-3.jpg
+#	modified:   img/Y16S902601-4.jpg
+#	modified:   img/Y16S902601.jpg
+#	modified:   img/Y16S902603-2.jpg
+#	modified:   img/Y16S902603-3.jpg
+#	modified:   img/Y16S902603-4.jpg
+#	modified:   img/Y16S902603.jpg
+#	modified:   img/Y16S902608-2.jpg
+#	modified:   img/Y16S902608-3.jpg
+#	modified:   img/Y16S902608-4.jpg
+#	modified:   img/Y16S902608.jpg
+#	modified:   img/home-page-image.jpg
+#	modified:   img/logo.png
+#	modified:   img/lookbook/5-compressor.jpg
+#	modified:   img/personlisation.jpg
+#	modified:   img/size-guide2.png
+#	modified:   js/custom.js
+#	modified:   js/jqexpander.js
+#	modified:   js/jquery.hammer.js
+#	modified:   js/jquery.min.js
+#
+# Untracked files:
+#	css/font-awesome.min.css
+#	css/main-nonCompressed.css
+#	img/lookbook/lookbook-1500x1000/
+#	js/custom-nonCompressed.js
+#	js/hammer.js
+#	mobile/
+#
+
